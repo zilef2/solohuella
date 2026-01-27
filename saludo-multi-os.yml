@@ -1,0 +1,30 @@
+# Nombre del flujo de trabajo
+name: Saludo Multi-OS
+
+# Evento que dispara este flujo de trabajo
+on:
+  push:
+    branches: [ main ] # Cambia 'main' si tu rama principal es otra (ej. 'master')
+
+# Define los trabajos (jobs) que se ejecutarán
+jobs:
+  # Nombre del trabajo
+  decir_hola_en_varios_os:
+    # Estrategia de ejecución: usar una matriz
+    strategy:
+      matrix:
+        # Define una variable 'os' con los sistemas operativos deseados
+        os: [ubuntu-latest, windows-latest]
+
+    # Especifica el tipo de máquina virtual, usando la variable de la matriz
+    # ${{ matrix.os }} se reemplazará por 'ubuntu-latest' en una ejecución
+    # y por 'windows-latest' en otra ejecución paralela.
+    runs-on: ${{ matrix.os }}
+
+    # Define los pasos que se ejecutarán en CADA una de las máquinas de la matriz
+    steps:
+      # Paso 1: Imprimir un saludo, indicando el SO actual
+      - name: Imprimir Saludo en ${{ matrix.os }} # El nombre del paso también puede usar la variable
+        # El comando de shell que se ejecutará
+        # Usamos la variable de la matriz para saber en qué SO estamos corriendo
+        run: echo "¡Hola Mundo desde GitHub Actions3 corriendo en ${{ matrix.os }}!"
