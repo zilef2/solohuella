@@ -5,7 +5,6 @@ import { Head, Link } from '@inertiajs/vue3';
 <template>
     <Head title="Welcome">
         <link rel="preconnect" href="https://rsms.me/" />
-        <!-- <link rel="stylesheet" href="https://rsms.me/inter/inter.css" /> -->
     </Head>
     <div class="flex min-h-screen flex-col items-center bg-[#FDFDFC] p-6 text-[#1b1b18] dark:bg-[#0a0a0a] lg:justify-center lg:p-8">
         <header class="not-has-[nav]:hidden mb-6 w-full max-w-[335px] text-sm lg:max-w-4xl">
@@ -18,11 +17,14 @@ import { Head, Link } from '@inertiajs/vue3';
                     Inicio
                 </Link>
                 <template v-else>
-                    <Link
-                        :href="route('huella')"
-                        class="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-                    > Huella
-                    </Link>
+                    <Link :href="route('alumnos.options')" class="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
+                    > Huella</Link>
+                    
+                    <Link :href="route('alumnos.options')" class="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
+                    > Buscar alumno</Link>
+                    
+                    <Link :href="route('subiralumnos')" class="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
+                    > Cargar BD</Link>
                     <Link
                         :href="route('login')"
                         class="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
@@ -45,7 +47,7 @@ import { Head, Link } from '@inertiajs/vue3';
                 >
                     <h1 class="mb-1 font-medium">Comenzemos</h1>
                     <p class="mb-2 text-[#706f6c] dark:text-[#A1A09A]">
-                        Laravel has an incredibly rich ecosystem. <br />We suggest starting with the following.
+                        Este proyecto es totalmente local <br />Te recomendamos utilizar un servidor
                     </p>
                     <ul class="mb-4 flex flex-col lg:mb-6">
                         <li
@@ -59,23 +61,14 @@ import { Head, Link } from '@inertiajs/vue3';
                                 </span>
                             </span>
                             <span>
-                                Read the
+                                24/7 disponible
                                 <a
-                                    href="https://laravel.com/docs"
+                                    href="#"
                                     target="_blank"
                                     class="ml-1 inline-flex items-center space-x-1 font-medium text-[#f53003] underline underline-offset-4 dark:text-[#FF4433]"
                                 >
-                                    <span>Documentation</span>
-                                    <svg
-                                        width="{10}"
-                                        height="{11}"
-                                        viewBox="0 0 10 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="h-2.5 w-2.5"
-                                    >
-                                        <path d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001" stroke="currentColor" stroke-linecap="square" />
-                                    </svg>
+                                    <span> Almacenamiento en la nube </span>
+                                    <svg width="{10}" height="{11}" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-2.5 w-2.5"><path d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001" stroke="currentColor" stroke-linecap="square" /></svg>
                                 </a>
                             </span>
                         </li>
@@ -90,23 +83,14 @@ import { Head, Link } from '@inertiajs/vue3';
                                 </span>
                             </span>
                             <span>
-                                Watch video tutorials at
+                                Sin riesgo de perdida de datos
                                 <a
-                                    href="https://laracasts.com"
+                                    href="https://www.hostgator.co/"
                                     target="_blank"
                                     class="ml-1 inline-flex items-center space-x-1 font-medium text-[#f53003] underline underline-offset-4 dark:text-[#FF4433]"
                                 >
-                                    <span>Laracasts</span>
-                                    <svg
-                                        width="{10}"
-                                        height="{11}"
-                                        viewBox="0 0 10 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="h-2.5 w-2.5"
-                                    >
-                                        <path d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001" stroke="currentColor" stroke-linecap="square" />
-                                    </svg>
+                                    <span>Online</span>
+                                    <svg width="{10}" height="{11}" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-2.5 w-2.5"><path d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001" stroke="currentColor" stroke-linecap="square" /></svg>
                                 </a>
                             </span>
                         </li>
@@ -114,11 +98,11 @@ import { Head, Link } from '@inertiajs/vue3';
                     <ul class="flex gap-3 text-sm leading-normal">
                         <li>
                             <a
-                                href="https://cloud.laravel.com"
+                                href="https://www.hostgator.co/"
                                 target="_blank"
                                 class="inline-block rounded-sm border border-black bg-[#1b1b18] px-5 py-1.5 text-sm leading-normal text-white hover:border-black hover:bg-black dark:border-[#eeeeec] dark:bg-[#eeeeec] dark:text-[#1C1C1A] dark:hover:border-white dark:hover:bg-white"
                             >
-                                Deploy now
+                                Descubre más
                             </a>
                         </li>
                     </ul>

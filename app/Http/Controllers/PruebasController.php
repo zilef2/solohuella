@@ -15,13 +15,4 @@ class PruebasController extends Controller {
 		$this->titleindex = 'Huella';
 	}
 	
-	public function index(Request $req) {
-		Carbon::setLocale('es');
-		
-		return Inertia::render('huella', [
-			'title'                 => $this->titleindex,
-			'filters'               => $req->all(['search', 'field']),
-		]);
-	}
-	
 }

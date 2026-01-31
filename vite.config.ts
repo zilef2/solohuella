@@ -8,12 +8,16 @@ import { defineConfig } from 'vite';
 export default defineConfig({
     // server: { host: '127.0.0.1', },
     server: {
-        host: '0.0.0.0', // Permite conexiones externas
+        host: '0.0.0.0', // Permite que ngrok/celular lo vean
+        strictPort: true,
         hmr: {
-            host: '5e3c19e69a66.ngrok-free.app', // TU URL de ngrok sin https://
+            host: 'localhost',
         },
-        cors: true, // Habilita CORS
+        watch: {
+            usePolling: true,
+        },
     },
+    base: '',
     plugins: [
         laravel({
             input: ['resources/js/app.ts'],

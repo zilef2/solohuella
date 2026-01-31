@@ -1,4 +1,4 @@
-<script setup>
+﻿<script setup lang="ts">
 import { router } from '@inertiajs/vue3';
 import { pickBy } from "lodash";
 import { reactive, watchEffect } from "vue";
@@ -34,7 +34,7 @@ const data = reactive({
 })
 
 const goto = (link) => {
-    let params = pickBy(data.params);
+    const params = pickBy(data.params);
     router.get(link, params, {
         replace: true,
         preserveState: true,
@@ -91,3 +91,4 @@ watchEffect(() => {
         </ul>
     </div>
 </template>
+

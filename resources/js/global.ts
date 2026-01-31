@@ -414,17 +414,6 @@ export function textoSinEspaciosLargos(texto) {
 }
 
 
-//array functions
-export function vectorSelect(vectorSelect, propsVector, genero = 'uno') {
-    vectorSelect = propsVector.map(
-        generico => (
-            {label: generico.nombre, value: generico.id}
-        )
-    )
-    vectorSelect.unshift({label: 'Seleccione ' + genero, value: 0})
-    return vectorSelect;
-}
-
 /*
 watch(() => form.tipoRes, (newX) => {
     data.selectedPrompID = 'Selecciona un promp'

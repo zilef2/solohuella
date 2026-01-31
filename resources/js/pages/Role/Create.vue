@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import Modal from '@/Components/Modal.vue';
@@ -46,7 +46,7 @@ watchEffect(() => {
     }
 })
 
-const selectAll = (event) => {
+const selectAll = (event:any) => {
     if (event.target.checked === false) {
         form.permissions = []
     } else {
@@ -111,3 +111,4 @@ const select = () => {
         </Modal>
     </section>
 </template>
+

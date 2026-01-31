@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import Modal from '@/Components/Modal.vue';
@@ -21,7 +21,7 @@ const props = defineProps({
 const emit = defineEmits(['close']);
 
 // VueDatePicker
-const formatToVue = (date) => {
+const formatToVue = (date:any) => {
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
@@ -30,10 +30,6 @@ const formatToVue = (date) => {
 };
 const flow = ref(['year', 'month', 'calendar']);
 const anioHoy = new Date().getFullYear();
-
-let anio = ref(0);
-const anio18 = anioHoy - 18;
-// VueDatePicker
 
 const form = useForm({
     name: '',
@@ -97,7 +93,7 @@ const daynames = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
                         <div>
                             <div class="inline-flex">
                                 <InputLabel for="name" :value="lang().label.name" />
-                                <small class="ml-1 text-lg font-bold"> {{ titulos[0].required ? '*' : 'ㅤ' }} </small>
+                                <small class="ml-1 text-lg font-bold"> {{ titulos[0].required ? '*' : 'ã…¤' }} </small>
                             </div>
                             <TextInput
                                 id="name"
@@ -176,7 +172,7 @@ const daynames = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
                         <div>
                             <div class="inline-flex">
                                 <InputLabel for="sexo" :value="lang().label.sexo" />
-                                <small class="ml-1 text-lg font-bold">ㅤ</small>
+                                <small class="ml-1 text-lg font-bold">ã…¤</small>
                             </div>
                             <SelectInput id="sexo" class="mt-1 block w-full" v-model="form.sexo" required :dataSet="sexos"> </SelectInput>
                             <InputError class="mt-2" :message="form.errors.sexo" />
@@ -184,7 +180,7 @@ const daynames = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
                         <div>
                             <div class="inline-flex">
                                 <InputLabel for="celular" :value="lang().label.celular" />
-                                <small class="ml-1 text-lg font-bold">ㅤ</small>
+                                <small class="ml-1 text-lg font-bold">ã…¤</small>
                             </div>
                             <TextInput id="celular" class="mt-1 block w-full" type="number" v-model="form.celular"> </TextInput>
                             <InputError class="mt-2" :message="form.errors.celular" />
@@ -192,7 +188,7 @@ const daynames = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
                         <div>
                             <div class="inline-flex">
                                 <InputLabel for="fecha_nacimiento" :value="lang().label.fecha_nacimiento" />
-                                <small class="ml-1 text-lg font-bold">ㅤ</small>
+                                <small class="ml-1 text-lg font-bold">ã…¤</small>
                             </div>
                             <VueDatePicker
                                 :is-24="false"
@@ -244,3 +240,4 @@ const daynames = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
         </Modal>
     </section>
 </template>
+

@@ -3,40 +3,47 @@
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';
 
-use App\Http\Controllers\{ProcesoController, PruebasController, RoleController, ParametrosController, PermissionController};
+use App\Models\User;
+use App\Http\Controllers\{ExcelController,
+	ProcesoController,
+	RoleController,
+	ParametrosController,
+	PermissionController,
+	HuellaController};
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-	
 	return Inertia::render('Welcome');
 })->name('home');
 
 
-Route::get('/huella', [PruebasController::class, 'index'])->name('huella');
+Route::match(['get', 'post'], '/alumnos/options', [HuellaController::class, 'getOptions'])->name('alumnos.options');
+Route::post('/alumnos/confirmar-registro', [HuellaController::class, 'confirmarRegistro'])->name('alumnos.confirmar-registro');
+Route::post('/alumnos/identificar', [HuellaController::class, 'identificar'])->name('alumnos.identificar');
 
+
+//alumnos excel
+Route::post('/uploadAlumnoss', [Excelcontroller::class, 'uploadAlumnoss'])->name('uploadAlumnoss');
+Route::get('subiralumnos', function () {
+	return Inertia::render('subiralumnos',[
+            'numUsuarios' => count(User::all()) - 1,//menos super
+         ]
+	);})->name('subiralumnos');
+
+
+
+
+//dashboard tipico
 Route::get('dashboard', function () {
 	return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/actuaciones', function () {
-	$contro = new PruebasController();
-	
-	$urlactuaciones = "https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/110010203000202500668000";
-	$llamada = $contro->obtenerAPIProceso($urlactuaciones);
-	dd(
-	    $llamada
-	);
-
-});
 
 Route::middleware('auth', 'verified')->group(function () {
 	//<editor-fold desc="profile - role - permission">
-//	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//	Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 	Route::resource('/role', RoleController::class)->except('create', 'show', 'edit');
 	Route::post('/role/destroy-bulk', [RoleController::class, 'destroyBulk'])->name('role.destroy-bulk');
 	Route::resource('/permission', PermissionController::class)->except('create', 'show', 'edit');

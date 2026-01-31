@@ -3,7 +3,7 @@
 return [
     'initial' => [
 		'Platform' => 'Dashboard',
-		'title' => 'Procesos judiciales',
+		'title' => 'Registro de alumnos',
 		'Log_in_to_your_account' => 'Ingrese a su cuenta',
 		'Enter_your_email_and_password_below_to_log_in' => 'Ingrese su email y contraseña a continuacion para ingresar',
 	],

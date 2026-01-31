@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
 
@@ -23,5 +24,11 @@ class AppServiceProvider extends ServiceProvider {
 				               'original' => app()->getLocale(),
 			               ],
 		               ]);
+		
+		// Si detecta que estamos entrando por un túnel o proxy (ngrok)
+		if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) || isset($_SERVER['HTTP_X_FORWARDED_HOST'])) {
+			URL::forceRootUrl(config('app.url'));
+			URL::forceScheme('https');
+		}
 	}
 }

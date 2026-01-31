@@ -51,7 +51,7 @@ return [
     | the application so that it's available within Artisan commands.
     |
     */
-
+//	'url' => 'https://6ba17a434c04.ngrok-free.app',
     'url' => env('APP_URL', 'http://localhost'),
 
     /*

@@ -236,20 +236,6 @@ class UserController extends Controller
 
     //FIN : STORE - UPDATE - DELETE
 
-    public function subirexceles()
-    { //just  a view
-        $permissions = Myhelp::EscribirEnLog($this, ' materia');
-        $numberPermissions = MyModels::getPermissionToNumber($permissions);
-
-        return Inertia::render('User/subirExceles', [
-            'breadcrumbs' => [['label' => __('app.label.user'), 'href' => route('user.index')]],
-            'title' => __('app.label.user'),
-            'numUsuarios' => count(User::all()) - 1,
-            // 'UniversidadSelect'   => Universidad::all()
-        ]);
-    }
-
-
     // Duplicate entry '1152194566' for key 'users_identificacion_unique'
     private function MensajeWar()
     {

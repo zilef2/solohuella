@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import AppLayout from '@/layouts/AppLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import Breadcrumb from '@/Components/Breadcrumb.vue';
@@ -48,11 +48,11 @@ const data = reactive({
     dataSet: usePage().props.app.perpage
 })
 
-const order = (field) => {
+const order = (field:any) => {
     data.params.field = field
-    console.log("🧈 debu data.params.field:", data.params.field);
+    console.log("ðŸ§ˆ debu data.params.field:", data.params.field);
     data.params.order = data.params.order === "asc" ? "desc" : "asc"
-    console.log("🧈 debu data.params.order:", data.params.order);
+    console.log("ðŸ§ˆ debu data.params.order:", data.params.order);
 }
 
 watch(() => _.cloneDeep(data.params), debounce(() => {
@@ -64,7 +64,7 @@ watch(() => _.cloneDeep(data.params), debounce(() => {
     })
 }, 150))
 
-const selectAll = (event) => {
+const selectAll = (event:any) => {
     if (event.target.checked === false) {
         data.selectedId = []
     } else {
@@ -138,7 +138,7 @@ const titulos = [
                         </DangerButton>
                     </div>
                     <TextInput v-if="props.numberPermissions > 1" v-model="data.params.search" type="text"
-                        class="block w-4/6 md:w-3/6 lg:w-2/6 rounded-lg" placeholder="Nombre, correo o identificación" />
+                        class="block w-4/6 md:w-3/6 lg:w-2/6 rounded-lg" placeholder="Nombre, correo o identificaciÃ³n" />
                 </div>
                 <div class="overflow-x-auto scrollbar-table">
                     <table class="w-full">
@@ -256,3 +256,4 @@ const titulos = [
         </div>
     </AppLayout>
 </template>
+

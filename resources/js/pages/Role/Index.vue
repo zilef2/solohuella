@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 // import AppLayout from '@/layouts/AppLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import Breadcrumb from '@/Components/Breadcrumb.vue';
@@ -46,7 +46,7 @@ const data = reactive({
     dataSet: usePage().props.app.perpage
 })
 
-const order = (field) => {
+const order = (field:any) => {
     data.params.field = field
     data.params.order = data.params.order === "asc" ? "desc" : "asc"
 }
@@ -205,3 +205,4 @@ const select = () => {
         </div>
 <!--    </AppLayout>-->
 </template>
+
